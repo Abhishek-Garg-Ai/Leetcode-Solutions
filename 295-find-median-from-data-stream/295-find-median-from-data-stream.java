@@ -10,15 +10,13 @@ class MedianFinder {
         if(maxHeap.size()==minHeap.size()){
             minHeap.add(num);
             maxHeap.add(minHeap.poll());
-        }else{
-            maxHeap.add(num);
-            minHeap.add(maxHeap.poll());
+            return;
         }
+        maxHeap.add(num);
+        minHeap.add(maxHeap.poll());
     }
     
     public double findMedian() {
-        // System.out.println(minHeap);
-        // System.out.println(maxHeap);
         if(minHeap.size()!=maxHeap.size()) return maxHeap.peek();
         return (maxHeap.peek()+minHeap.peek())/2.0;
     }
