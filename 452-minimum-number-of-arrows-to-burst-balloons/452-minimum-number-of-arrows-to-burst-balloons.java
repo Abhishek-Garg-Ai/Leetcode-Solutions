@@ -4,12 +4,11 @@ class Solution {
         int count=1;
         int index=1;
         int curr=0;
-        while(index<points.length){
-            if(points[index][0]>points[curr][1]){
+        for(int i=1;i<points.length;i++){
+            if(i==0 || points[i][0]>points[curr][1]){
                 count+=1;
-                curr=index;
+                curr=i;
             }
-            index+=1;
         }
         // System.out.println(Arrays.deepToString(points));
         return count;
