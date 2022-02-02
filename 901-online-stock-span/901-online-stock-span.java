@@ -6,12 +6,11 @@ class StockSpanner {
     public StockSpanner() {
         st=new Stack<>();
         lt=new ArrayList<>();
-        index=-1;
     }
     
     public int next(int price) {
         lt.add(price);
-        index++;//3
+        int index=lt.size()-1;//3
         while(st.isEmpty()==false && lt.get(st.peek())<=price) st.pop();
         
         int result=index+1;
