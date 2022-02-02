@@ -12,10 +12,8 @@ class StockSpanner {
     public int next(int price) {
         lt.add(price);
         index++;//3
-        int curr=index-1;//2
-        while(st.isEmpty()==false && lt.get(st.peek())<=price){
-            st.pop();
-        }
+        while(st.isEmpty()==false && lt.get(st.peek())<=price) st.pop();
+        
         int result=index+1;
         if(!st.isEmpty()) result=index-st.peek();
         st.push(index);
