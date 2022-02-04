@@ -13,13 +13,6 @@ class Solution {
                 curr=0;
             }
         }
-        // System.out.println(st);
-        // // if(st.isEmpty() || st.size()==nums.length) return nge;
-        // int prev=st.pop();
-        // while(st.isEmpty()==false){
-        //     nge[prev]=nums[st.peek()];
-        //     prev=st.pop();
-        // }
         return nge;
     }
 }
