@@ -3,8 +3,6 @@ class Solution {
         int[] pse_arr=pse(heights);
         int[] nse_arr=nse(heights);
         int max=0;
-        // System.out.println(Arrays.toString(pse_arr));
-        // System.out.println(Arrays.toString(nse_arr));
         for(int i=0;i<heights.length;i++){
             int dist=(i-pse_arr[i])+(nse_arr[i]-i-1);
             max=Math.max(max,dist*heights[i]);
