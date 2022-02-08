@@ -14,7 +14,6 @@
  * }
  */
 class Solution {
-    int max_dia=0;
     public int diameterOfBinaryTree(TreeNode root) {
         if(root==null) return 0;
         int max_dia=height(root.left)+height(root.right);
