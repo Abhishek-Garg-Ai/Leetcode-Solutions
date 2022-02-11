@@ -10,9 +10,7 @@ class Solution {
         while(p2<s1.length())       
             map2.put(s2.charAt(p2),map2.getOrDefault(s2.charAt(p2++),0)+1);
         
-        // System.out.println(map1);
         while(p2<s2.length()){
-            // System.out.println(map2);
             if(map1.equals(map2)==true) return true;
             map2.put(s2.charAt(p1),map2.get(s2.charAt(p1))-1);
             if(map2.get(s2.charAt(p1))<=0) map2.remove(s2.charAt(p1));
