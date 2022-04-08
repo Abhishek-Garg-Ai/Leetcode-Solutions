@@ -11,10 +11,10 @@ public class Solution extends GuessGame {
     public int guessNumber(int n) {
         int l=1;
         int h=n;
+        int m,g;
         while(l<=h){
-            int m=l+(h-l)/2;
-            int g=guess(m);
-            // System.out.println(m+" "+g);
+            m=l+(h-l)/2;
+            g=guess(m);
             if(g==0) return m;
             else if(g==-1) h=m-1;
             else l=m+1;
