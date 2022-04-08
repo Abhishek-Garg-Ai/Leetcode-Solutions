@@ -6,8 +6,10 @@ class KthLargest {
         pq=new PriorityQueue<>();
         for(int num:nums){
             pq.add(num);
-            if(pq.size()>k) pq.poll();
-        } 
+        }
+        while(pq.size()>k){
+            pq.poll();
+        }
         
     }
     
