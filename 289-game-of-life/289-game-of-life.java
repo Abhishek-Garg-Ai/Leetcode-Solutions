@@ -11,8 +11,7 @@ class Solution {
             for(int j=0;j<board[0].length;j++){
                 int count=helper[i][j];
                 if(board[i][j]==1){
-                    if(count==3 || count==4) board[i][j]=1;
-                    else board[i][j]=0;
+                    if(count!=3 && count!=4) board[i][j]=0;
                 }else{
                     if(count==3) board[i][j]=1;
                 }
