@@ -1,20 +1,21 @@
 class Solution {
     public void gameOfLife(int[][] board) {
-        int[][] helper=new int[board.length][board[0].length];
         for(int i=0;i<board.length;i++){
             for(int j=0;j<board[0].length;j++){
                 int count=live_neighbors(board,i,j);
-                helper[i][j]=count;
+                if(board[i][j]==1){
+                    if(count!=3 && count!=4) board[i][j]=2;
+                }else{
+                    if(count==3) board[i][j]=-1;
+                }
             }
         }
+        
         for(int i=0;i<board.length;i++){
             for(int j=0;j<board[0].length;j++){
-                int count=helper[i][j];
-                if(board[i][j]==1){
-                    if(count!=3 && count!=4) board[i][j]=0;
-                }else{
-                    if(count==3) board[i][j]=1;
-                }
+                if(board[i][j]==2) board[i][j]=0;
+                else if(board[i][j]==-1) board[i][j]=1;
+                
             }
         }
     
@@ -24,7 +25,7 @@ class Solution {
         int ans=0;
         for(int i=Math.max(0,cr-1);i<=Math.min(board.length-1,cr+1);i++){
             for(int j=Math.max(0,cc-1);j<=Math.min(board[0].length-1,cc+1);j++)
-                ans+=board[i][j];
+                if(board[i][j]==1 || board[i][j]==2) ans+=1;
         }
         return ans;
     }
