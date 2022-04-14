@@ -1,23 +1,23 @@
 class Solution {
     public int numIslands(char[][] grid) {
-        int islands=0;
+        int ans=0;
         for(int i=0;i<grid.length;i++){
             for(int j=0;j<grid[0].length;j++){
                 if(grid[i][j]=='1'){
-                    islands+=1;
-                    visitIsland(grid,i,j);
+                    ans+=1;
+                    helper(grid,i,j);
                 }
             }
         }
-        return islands;
+        return ans;
     }
     
-    public void visitIsland(char[][] grid, int r,int c){
-        if(r<0 || c<0 || r>=grid.length || c>=grid[0].length || grid[r][c]!='1') return;
-        grid[r][c]='0';
-        visitIsland(grid,r+1,c);
-        visitIsland(grid,r-1,c);
-        visitIsland(grid,r,c+1);
-        visitIsland(grid,r,c-1);
+    public void helper(char[][] grid, int cr,int cc){
+        if(cr>=grid.length || cr<0 || cc>=grid[0].length || cc<0 || grid[cr][cc]=='0') return;
+        grid[cr][cc]='0';
+        helper(grid,cr+1,cc);
+        helper(grid,cr-1,cc);
+        helper(grid,cr,cc+1);
+        helper(grid,cr,cc-1);
     }
 }
