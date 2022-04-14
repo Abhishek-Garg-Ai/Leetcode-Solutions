@@ -12,13 +12,10 @@ class Solution {
         });
         int curr=logs.length-1;
         for(int i=logs.length-1;i>-1;i--){
-            if(Character.isAlphabetic(logs[i].charAt(logs[i].length()-1))) pq.add(logs[i]);
+            if(Character.isAlphabetic(logs[i].charAt(logs[i].length()-1)))
+                pq.add(logs[i]);
             else result[curr--]=logs[i];
         }
-        // pq.add(logs[1]);
-        // pq.add(logs[3]);
-        // pq.add(logs[4]);
-        // // System.out.println(pq);
         curr=0;
         while(pq.size()>0) result[curr++]=(pq.poll());
         return result;
