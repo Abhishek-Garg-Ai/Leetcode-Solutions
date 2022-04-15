@@ -15,18 +15,12 @@
  */
 class Solution {
     public TreeNode trimBST(TreeNode root, int low, int high) {
-        // if(root==null) return root;
-        // if(root.val>high) return 
-        return helper(root,low,high);
+        if(root==null) return root;
+        if(root.val<low) return trimBST(root.right,low,high);
+        if(root.val>high) return trimBST(root.left,low,high);
+        root.left=trimBST(root.left,low,high);
+        root.right=trimBST(root.right,low,high);
+        return root;    
     }
     
-    public TreeNode helper(TreeNode root,int low,int high){
-        if(root==null) return root;
-        if(root.val<low) return helper(root.right,low,high);
-        if(root.val>high) return helper(root.left,low,high);
-        root.left=helper(root.left,low,high);
-        root.right=helper(root.right,low,high);
-        return root;    
-
-    }
 }
