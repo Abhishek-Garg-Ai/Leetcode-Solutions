@@ -23,7 +23,7 @@ class Solution {
     }
     
     public void inorder(TreeNode root){
-        if(root==null) return;
+        if(root==null||curr<0) return;
         inorder(root.left);
         // System.out.println(root.val+" "+curr);
         if(curr==1) ans=root.val;
