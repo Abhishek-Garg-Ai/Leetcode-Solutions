@@ -14,27 +14,30 @@
  * }
  */
 class Solution {
-    TreeNode prev_max=new TreeNode(Integer.MIN_VALUE);
-    TreeNode next_min;
+    TreeNode node1,node2,node3;
+    TreeNode prev=new TreeNode(Integer.MIN_VALUE);
     public void recoverTree(TreeNode root) {
         inorder(root);
-        // System.out.println(prev_max.val+" "+next_min.val);
-        int temp=prev_max.val;
-        prev_max.val=next_min.val;
-        next_min.val=temp;
+        // System.out.println(node1.val+" "+node2.val+" "+node3.val);
+        if(node3==null) node3=node2;
+        int temp=node1.val;
+        node1.val=node3.val;
+        node3.val=temp;
+        
     }
     
     public void inorder(TreeNode root){
         if(root==null) return;
         inorder(root.left);
-        if(next_min!=null && root.val<next_min.val) next_min=root;
-        if(root.val<prev_max.val){
-            next_min=root;
+        if(prev.val>root.val){
+            if(node2!=null) node3=root; 
+            else{
+                node1=prev;
+                node2=root;
+            }
+            prev=root;
         }
-        else if(next_min==null && root.val>prev_max.val) prev_max=root;
+        prev=root;
         inorder(root.right);
     }
-    
-    
-    
 }
