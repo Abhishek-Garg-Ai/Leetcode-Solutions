@@ -8,8 +8,7 @@ class Solution {
             if(count<2) return -1;
             if(count==2) ans+=1;
             else if(count%3==0) ans+=count/3;
-            else if(count%3==2) ans+=count/3+1;
-            else if(count%3==1) ans+=count/3+1;
+            else ans+=count/3+1;
         }
         return ans;
     }
