@@ -14,10 +14,8 @@
  * }
  */
 class BSTIterator {
-    // TreeNode root;
     Stack<TreeNode> st=new Stack<>();
     public BSTIterator(TreeNode root) {
-        // this.root=root;
         fill_left(root);
     }
     
