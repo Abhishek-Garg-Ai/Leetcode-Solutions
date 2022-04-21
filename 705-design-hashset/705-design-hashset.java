@@ -1,6 +1,6 @@
 class MyHashSet {
     ArrayList<Integer>[] arr;
-    int size=100000;
+    int size=100;
     public MyHashSet() {
         arr=new ArrayList[size+1];
         // System.out.println(arr.length);
