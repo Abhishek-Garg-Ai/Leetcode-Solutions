@@ -1,6 +1,6 @@
 
 class MyHashMap {
-    int size=1000;
+    int size=100;
     Node[] arr;
     public MyHashMap() {
         arr=new Node[size];
