@@ -1,12 +1,16 @@
 class UndergroundSystem {
     //station time
-    HashMap<String,String> map_time=new HashMap<>();
+    HashMap<String,String> map_time;
     //checkIn time
-    HashMap<Integer,Integer> map_checkIn=new HashMap<>();
+    HashMap<Integer,Integer> map_checkIn;
     //current station
-    HashMap<Integer,String> map_curr=new HashMap<>();
+    HashMap<Integer,String> map_curr;
     
-    public UndergroundSystem() {}
+    public UndergroundSystem() {
+        map_time=new HashMap<>();
+        map_checkIn=new HashMap<>();
+        map_curr=new HashMap<>();
+    }
     
     public void checkIn(int id, String stationName, int t) {
         map_curr.put(id,stationName);
