@@ -1,16 +1,12 @@
 class UndergroundSystem {
     //station time
-    HashMap<String,String> map_time;
+    HashMap<String,String> map_time=new HashMap<>();
     //checkIn time
-    HashMap<Integer,Integer> map_checkIn;
+    HashMap<Integer,Integer> map_checkIn=new HashMap<>();
     //current station
-    HashMap<Integer,String> map_curr;
+    HashMap<Integer,String> map_curr=new HashMap<>();
     
-    public UndergroundSystem() {
-        map_time=new HashMap<>();
-        map_checkIn=new HashMap<>();
-        map_curr=new HashMap<>();
-    }
+    public UndergroundSystem() {}
     
     public void checkIn(int id, String stationName, int t) {
         map_curr.put(id,stationName);
@@ -30,7 +26,6 @@ class UndergroundSystem {
         String key=startStation+"-"+endStation;
         String[] lt=map_time.get(key).split(" ");
         double s=0;
-        // System.out.println(Arrays.toString(lt));
         for(int i=0;i<lt.length;i++) s=s+Integer.valueOf(lt[i]);
         return s/(lt.length-1);
     }
