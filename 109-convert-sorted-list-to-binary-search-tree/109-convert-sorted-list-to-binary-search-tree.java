@@ -35,8 +35,7 @@ class Solution {
         ListNode mid=getMiddle(head);
         TreeNode root=new TreeNode(mid.val);
         root.left=helper(head);
-        if(mid.next!=null) root.right=helper(mid.next);
-        
+        root.right=helper(mid.next);
         return root;
     
     }
