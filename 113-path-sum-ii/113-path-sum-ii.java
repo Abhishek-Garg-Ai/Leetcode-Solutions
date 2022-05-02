@@ -17,20 +17,20 @@ class Solution {
     List<List<Integer>> result;
     public List<List<Integer>> pathSum(TreeNode root, int targetSum) {
         result=new ArrayList<>();
-        ArrayList<Integer> lt=new ArrayList<>();
+        Deque<Integer> lt=new ArrayDeque<>();
         helper(root,targetSum,lt);
         return result;
     }
-    public void helper(TreeNode root,int sum,ArrayList<Integer> lt){
+    public void helper(TreeNode root,int sum,Deque<Integer> lt){
         if(root==null) return;
         if(root.left==null && root.right==null && sum==root.val){
-            lt.add(root.val);
+            lt.addLast(root.val);
             result.add(new ArrayList<>(lt));
-            lt.remove(lt.size()-1);
-        }lt.add(root.val);
+            lt.removeLast();
+        }lt.addLast(root.val);
         sum-=root.val;
         helper(root.left,sum,lt);
         helper(root.right,sum,lt);
-        lt.remove(lt.size()-1);
+        lt.removeLast();
     }
 }
