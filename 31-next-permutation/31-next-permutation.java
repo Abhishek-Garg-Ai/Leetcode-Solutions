@@ -9,13 +9,9 @@ class Solution {
         }
         int temp=n-1;
         while(temp>curr && nums[curr]>=nums[temp]) temp--;
-        // System.out.println(Arrays.toString(nums)+" "+curr+" "+temp);
         swap(nums,curr,temp);
         reverse(nums,curr+1);
         
-        // System.out.println("Y");
-        // Collections.reverse(Arrays.asList(nums));
-
     }
     public void swap(int[] nums,int a,int b){
         int temp=nums[a];
