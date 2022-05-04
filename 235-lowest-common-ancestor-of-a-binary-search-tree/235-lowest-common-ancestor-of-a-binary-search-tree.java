@@ -11,17 +11,14 @@
 class Solution {
     public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
         // p contain the min value among p&q
-        if(p.val>q.val){
-            TreeNode temp=p;
-            p=q;
-            q=temp;
-        }
-        return helper(root,p,q);
+        int min=Math.min(p.val,q.val);
+        int max=Math.max(p.val,q.val);
+        return helper(root,min,max);
     }
     
-    public TreeNode helper(TreeNode root,TreeNode p, TreeNode q){
-        if(root.val>=p.val && root.val<=q.val) return root;
-        if(root.val>q.val) return helper(root.left,p,q);
+    public TreeNode helper(TreeNode root,int p, int q){
+        if(root.val>=p && root.val<=q) return root;
+        if(root.val>q) return helper(root.left,p,q);
         return helper(root.right,p,q);
     }
 }
