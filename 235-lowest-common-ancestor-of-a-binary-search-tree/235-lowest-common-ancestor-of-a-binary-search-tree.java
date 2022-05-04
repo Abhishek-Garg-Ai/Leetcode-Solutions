@@ -10,7 +10,6 @@
 
 class Solution {
     public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
-        // p contain the min value among p&q
         int min=Math.min(p.val,q.val);
         int max=Math.max(p.val,q.val);
         return helper(root,min,max);
