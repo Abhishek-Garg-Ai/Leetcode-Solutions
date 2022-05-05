@@ -10,9 +10,8 @@
 class Solution {
     public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
         if(root==p || root==q) return root;
-        boolean has_p=helper(root.left,p);
-        boolean has_q=helper(root.left,q);
-        // System.out.println(root.val+" "+has_p+" "+has_q);
+        boolean has_p=helper(root.left,p.val);
+        boolean has_q=helper(root.left,q.val);
         if(has_p && has_q)
             return lowestCommonAncestor(root.left,p,q);
         if(has_p || has_q)
@@ -20,9 +19,9 @@ class Solution {
         return lowestCommonAncestor(root.right,p,q);
     }
     
-    public boolean helper(TreeNode root, TreeNode p){
+    public boolean helper(TreeNode root, int p){
         if(root==null) return false;
-        if(root==p) return true;
+        if(root.val==p) return true;
         return helper(root.left,p) || helper(root.right,p);
     }
 }
