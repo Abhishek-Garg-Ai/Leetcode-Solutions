@@ -1,17 +1,10 @@
 class Solution {
     List<String> result;
-    HashMap<Character,String> map;
+    // HashMap<Character,String> map;
+    String[] map;
     public List<String> letterCombinations(String digits) {
         result=new ArrayList<>();
-        map=new HashMap<>();
-        map.put('2',"abc");
-        map.put('3',"def");
-        map.put('4',"ghi");
-        map.put('5',"jkl");
-        map.put('6',"mno");
-        map.put('7',"pqrs");
-        map.put('8',"tuv");
-        map.put('9',"wxyz");
+        map=new String[]{"abc","def","ghi","jkl","mno","pqrs","tuv","wxyz"};
         helper(digits,0, "");
         return result;
     }
@@ -22,8 +15,8 @@ class Solution {
             return;
         }
         char ch=digits.charAt(curr);
-        for(int i=0;i<map.get(ch).length();i++){
-            helper(digits,curr+1,res+map.get(ch).charAt(i));
+        for(int i=0;i<map[(int)(ch-'2')].length();i++){
+            helper(digits,curr+1,res+map[(int)(ch-'2')].charAt(i));
         }
     }
     
