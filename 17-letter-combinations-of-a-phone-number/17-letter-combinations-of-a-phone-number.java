@@ -4,6 +4,7 @@ class Solution {
     String[] map;
     public List<String> letterCombinations(String digits) {
         result=new ArrayList<>();
+        if(digits.length()==0) return result;
         map=new String[]{"abc","def","ghi","jkl","mno","pqrs","tuv","wxyz"};
         helper(digits,0, "");
         return result;
@@ -11,7 +12,7 @@ class Solution {
     
     public void helper(String digits, int curr, String res){
         if(curr==digits.length()){
-            if(!res.equals(""))result.add(res);
+            result.add(res);
             return;
         }
         char ch=digits.charAt(curr);
