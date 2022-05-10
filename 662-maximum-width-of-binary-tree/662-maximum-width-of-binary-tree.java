@@ -28,10 +28,10 @@ class Solution {
                 TreeNode curr=q.poll();
                 end=curr.val;
                 if(curr.left!=null){
-                    curr.left.val=curr.val*2;
+                    curr.left.val=curr.val*2-start;
                     q.offer(curr.left);
                 }if(curr.right!=null){
-                    curr.right.val=curr.val*2+1;
+                    curr.right.val=curr.val*2+1-start;
                     q.offer(curr.right);
                 }
                 l-=1;
