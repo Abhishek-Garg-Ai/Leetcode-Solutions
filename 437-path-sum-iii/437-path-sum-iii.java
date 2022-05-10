@@ -14,23 +14,21 @@
  * }
  */
 class Solution {
-    int ans=0;
     public int pathSum(TreeNode root, int targetSum) {
         HashMap<Integer,Integer> map=new HashMap<>();
         map.put(0,1);
-        helper(root,map,0,targetSum);
-        // System.out.println(map);
-        return ans;
+        return helper(root,map,0,targetSum);
     }
     
-    public void helper(TreeNode root, HashMap<Integer,Integer> map,int sum,int target){
-        if(root==null) return;
+    public int helper(TreeNode root, HashMap<Integer,Integer> map,int sum,int target){
+        if(root==null) return 0;
         sum+=root.val;
-        ans+=map.getOrDefault(sum-target,0);
+        int ans=map.getOrDefault(sum-target,0);
         map.put(sum,map.getOrDefault(sum,0)+1);
-        helper(root.left,map,sum,target);
-        helper(root.right,map,sum,target);
+        ans+=helper(root.left,map,sum,target);
+        ans+=helper(root.right,map,sum,target);
         if(map.get(sum)==1) map.remove(sum);
         else map.put(sum,map.get(sum)-1);
+        return ans;
     }
 }
