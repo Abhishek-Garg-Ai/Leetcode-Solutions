@@ -15,7 +15,6 @@
  */
 class Solution {
     public int widthOfBinaryTree(TreeNode root) {
-        if(root==null) return 0;
         Queue<TreeNode> q=new LinkedList<>();
         root.val=1;
         q.offer(root);
