@@ -16,21 +16,21 @@
 class Solution {
     int ans=0;
     public int pathSum(TreeNode root, int targetSum) {
-        path1(root,targetSum);
+        HashMap<Integer,Integer> map=new HashMap<>();
+        map.put(0,1);
+        helper(root,map,0,targetSum);
+        // System.out.println(map);
         return ans;
     }
     
-    public void path1(TreeNode root,int targetSum){
+    public void helper(TreeNode root, HashMap<Integer,Integer> map,int sum,int target){
         if(root==null) return;
-        path1(root.left,targetSum);
-        path1(root.right,targetSum);
-        path2(root,targetSum);
-    }
-    
-    public void path2(TreeNode root, int targetSum){
-        if(root==null) return;
-        if(targetSum==root.val) ans+=1;
-        path2(root.left,targetSum-root.val);
-        path2(root.right,targetSum-root.val);
+        sum+=root.val;
+        ans+=map.getOrDefault(sum-target,0);
+        map.put(sum,map.getOrDefault(sum,0)+1);
+        helper(root.left,map,sum,target);
+        helper(root.right,map,sum,target);
+        if(map.get(sum)==1) map.remove(sum);
+        else map.put(sum,map.get(sum)-1);
     }
 }
