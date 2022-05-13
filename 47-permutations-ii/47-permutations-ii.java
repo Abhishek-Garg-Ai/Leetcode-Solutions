@@ -18,10 +18,10 @@ class Solution {
         for(int key:map.keySet()){
             if(map.get(key)>0){
                 int val=map.get(key);
-                lt.add(key);
+                lt.addLast(key);
                 map.put(key,val-1);
                 helper(N,map,lt);
-                lt.remove(lt.size()-1);
+                lt.removeLast();
                 map.put(key,val);
             }
         }
