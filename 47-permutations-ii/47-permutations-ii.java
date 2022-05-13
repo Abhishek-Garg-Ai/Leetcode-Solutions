@@ -1,49 +1,30 @@
 class Solution {
-
+    List<List<Integer>> results;
     public List<List<Integer>> permuteUnique(int[] nums) {
-        List<List<Integer>> results = new ArrayList<>();
-
-        // count the occurrence of each number
-        HashMap<Integer, Integer> counter = new HashMap<>();
-        for (int num : nums) {
-            if (!counter.containsKey(num))
-                counter.put(num, 0);
-            counter.put(num, counter.get(num) + 1);
-        }
-
-        LinkedList<Integer> comb = new LinkedList<>();
-        this.backtrack(comb, nums.length, counter, results);
+        results = new ArrayList<>();
+        HashMap<Integer, Integer> map = new HashMap<>();
+        for (int num : nums)
+            map.put(num,map.getOrDefault(num,0)+1);
+        ArrayList<Integer> lt=new ArrayList<>();
+        helper(nums.length,map,lt);
         return results;
     }
-
-    protected void backtrack(
-            LinkedList<Integer> comb,
-            Integer N,
-            HashMap<Integer, Integer> counter,
-            List<List<Integer>> results) {
-
-        if (comb.size() == N) {
-            // make a deep copy of the resulting permutation,
-            // since the permutation would be backtracked later.
-            results.add(new ArrayList<Integer>(comb));
+    
+    public void helper(int N, HashMap<Integer,Integer> map, ArrayList<Integer> lt){
+        if(lt.size()==N){
+            results.add(new ArrayList<>(lt));
             return;
         }
-
-        for (Map.Entry<Integer, Integer> entry : counter.entrySet()) {
-            Integer num = entry.getKey();
-            Integer count = entry.getValue();
-            if (count == 0)
-                continue;
-            // add this number into the current combination
-            comb.addLast(num);
-            counter.put(num, count - 1);
-
-            // continue the exploration
-            backtrack(comb, N, counter, results);
-
-            // revert the choice for the next exploration
-            comb.removeLast();
-            counter.put(num, count);
+        for(int key:map.keySet()){
+            if(map.get(key)>0){
+                int val=map.get(key);
+                lt.add(key);
+                map.put(key,val-1);
+                helper(N,map,lt);
+                lt.remove(lt.size()-1);
+                map.put(key,val);
+            }
         }
     }
+
 }
