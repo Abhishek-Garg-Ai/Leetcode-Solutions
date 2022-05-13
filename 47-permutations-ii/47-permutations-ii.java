@@ -5,12 +5,12 @@ class Solution {
         HashMap<Integer, Integer> map = new HashMap<>();
         for (int num : nums)
             map.put(num,map.getOrDefault(num,0)+1);
-        ArrayList<Integer> lt=new ArrayList<>();
+        LinkedList<Integer> lt=new LinkedList<>();
         helper(nums.length,map,lt);
         return results;
     }
     
-    public void helper(int N, HashMap<Integer,Integer> map, ArrayList<Integer> lt){
+    public void helper(int N, HashMap<Integer,Integer> map, LinkedList<Integer> lt){
         if(lt.size()==N){
             results.add(new ArrayList<>(lt));
             return;
