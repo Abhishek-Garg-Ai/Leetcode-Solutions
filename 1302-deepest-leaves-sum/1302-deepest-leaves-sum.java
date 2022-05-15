@@ -17,7 +17,6 @@ class Solution {
     
     public int deepestLeavesSum(TreeNode root) {
         int h=height(root);
-        // System.out.println(h);
         return helper(root,h);
     }
     
