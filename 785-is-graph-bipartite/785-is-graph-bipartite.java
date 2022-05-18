@@ -1,12 +1,10 @@
 class Solution {
     int[] color;
-    boolean[] visited;
     public boolean isBipartite(int[][] graph) {
         color=new int[graph.length];
-        visited=new boolean[graph.length];
         Arrays.fill(color,-1);
         for(int i=0;i<graph.length;i++){
-            if(!visited[i]) if(!bfs(graph,i)) return false;
+            if(color[i]==-1) if(!bfs(graph,i)) return false;
         }
         return true;
     }
@@ -17,7 +15,6 @@ class Solution {
         color[s]=0;
         while(!q.isEmpty()){
             Node curr=q.poll();
-            visited[curr.val]=true;
             for(int u:graph[curr.val]){
                if(color[u]==curr.color) return false;
                 if(color[u]==-1){
