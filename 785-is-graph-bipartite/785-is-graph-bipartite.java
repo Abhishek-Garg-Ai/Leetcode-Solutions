@@ -20,7 +20,7 @@ class Solution {
             visited[curr.val]=true;
             for(int u:graph[curr.val]){
                if(color[u]==curr.color) return false;
-                if(color[u]==-1 && !visited[u]){
+                if(color[u]==-1){
                     color[u]=1-curr.color;
                     q.offer(new Node(u,1-curr.color));
                 }
