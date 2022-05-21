@@ -5,7 +5,7 @@ class Solution {
             map.put(i,points[i]);
         HashSet<Integer> set=new HashSet<>();
         PriorityQueue<int[]> pq=new PriorityQueue<>((a,b)-> a[2]-b[2]);
-        pq.add(new int[]{0,0,0});
+        pq.offer(new int[]{0,0,0});
         int ans=0;
         while(!pq.isEmpty() && set.size()<points.length){
             int[] curr=pq.poll();
@@ -14,7 +14,7 @@ class Solution {
             set.add(curr[1]);
             for(int i=0;i<points.length;i++){
                 if(!set.contains(i))
-                pq.add(new int[]{curr[1],i,dist(map.get(curr[1]),map.get(i))});
+                pq.offer(new int[]{curr[1],i,dist(map.get(curr[1]),map.get(i))});
             }
         }
         return ans;
