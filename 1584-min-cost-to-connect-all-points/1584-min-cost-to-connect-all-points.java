@@ -1,8 +1,5 @@
 class Solution {
     public int minCostConnectPoints(int[][] points) {
-        HashMap<Integer,int[]> map=new HashMap<>();
-        for(int i=0;i<points.length;i++)
-            map.put(i,points[i]);
         HashSet<Integer> set=new HashSet<>();
         PriorityQueue<int[]> pq=new PriorityQueue<>((a,b)-> a[2]-b[2]);
         pq.offer(new int[]{0,0,0});
@@ -14,7 +11,7 @@ class Solution {
             set.add(curr[1]);
             for(int i=0;i<points.length;i++){
                 if(!set.contains(i))
-                pq.offer(new int[]{curr[1],i,dist(map.get(curr[1]),map.get(i))});
+                pq.offer(new int[]{curr[1],i,dist(points[curr[1]],points[i])});
             }
         }
         return ans;
