@@ -1,6 +1,8 @@
 class Solution {
     int[] dp;
     public int coinChange(int[] coins, int amount) {
+        Arrays.sort(coins);
+        Collections.reverse(Arrays.asList(coins));
         dp=new int[amount+1];
         Arrays.fill(dp,-1);
         int ans=solver(coins,amount);
