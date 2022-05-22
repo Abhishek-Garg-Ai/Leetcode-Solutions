@@ -1,24 +1,19 @@
 class Solution {
-    int[][] dp;
-    public int countSubstrings(String s) {
-        int n=s.length();
-        dp=new int[n][n];
+    boolean[][] dp;
+    public int countSubstrings(String str) {
+        int n=str.length();
+        dp=new boolean[n][n];
         int ans=0;
-        for(int i=0;i<n;i++){
-            for(int j=i;j<n;j++){
-                if(helper(s,i,j)==1) ans+=1;
+        for(int gap=0;gap<n;gap++){
+            for(int s=0,e=gap; e<n;s++,e++){
+                if(gap==0) dp[s][e]=true;
+                else if(gap==1) dp[s][e]=str.charAt(s)==str.charAt(e);
+                else{
+                    if(str.charAt(s)==str.charAt(e)) dp[s][e]=dp[s+1][e-1];
+                }
+                if(dp[s][e]) ans+=1;
             }
         }
         return ans;
-        
-    }
-    
-    public int helper(String s,int i,int j){
-        if(i==j) return 1; // single char
-        if(j==i+1) return s.charAt(i)==s.charAt(j)?1:-1; //double char
-        if(j<i) return -1;
-        if(dp[i][j]!=0) return dp[i][j];
-        if(s.charAt(i)==s.charAt(j)) return dp[i][j]=helper(s,i+1,j-1);
-        return -1;
     }
 }
