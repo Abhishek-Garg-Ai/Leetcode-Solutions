@@ -1,6 +1,10 @@
 class Solution {
     int[][][] dp;
+    int[] cnt_0;
     public int findMaxForm(String[] strs, int m, int n) {
+        cnt_0=new int[strs.length];
+        int p=0;
+        for(String str:strs) cnt_0[p++]=count_0(str); 
         dp=new int[strs.length][m+1][n+1];
         for(int i=0;i<dp.length;i++)
             for(int j=0;j<dp[0].length;j++)
@@ -11,7 +15,7 @@ class Solution {
     public int helper(String[] strs, int curr, int m ,int n){
         if(curr>=strs.length) return 0;
         if(dp[curr][m][n]!=-1) return dp[curr][m][n];
-        int c_0=count_0(strs[curr]);
+        int c_0=cnt_0[curr];
         int c_1=strs[curr].length()-c_0;
         int max=0;
         if(c_0<=m && c_1<=n)
