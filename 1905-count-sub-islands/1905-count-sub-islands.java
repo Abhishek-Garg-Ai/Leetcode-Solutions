@@ -3,19 +3,11 @@ class Solution {
     int[][] dp;
     int[][] directions=new int[][]{{1,0},{0,1},{-1,0},{0,-1}};
     public int countSubIslands(int[][] grid1, int[][] grid2) {
-        // parent=new int
         int ans=0;
         dp=new int[grid1.length][grid1[0].length];
-        // for(int i=0;i< dp.length; i++) Arrays
-        for(int i=0;i<grid1.length;i++){
-            for(int j=0;j<grid1[0].length;j++){
-                if(grid2[i][j]==1){
-                    if(is_sub_island(grid1, grid2, i, j)==1){
-                        ans+=1;
-                    }
-                }
-            }
-        }
+        for(int i=0;i<grid1.length;i++)
+            for(int j=0;j<grid1[0].length;j++)
+                if(grid2[i][j]==1 && is_sub_island(grid1, grid2, i, j)==1) ans+=1;
         return ans;
     }
     
