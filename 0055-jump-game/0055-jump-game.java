@@ -1,21 +1,16 @@
 class Solution {
-    int[] dp;
+    boolean[] dp;
     public boolean canJump(int[] nums) {
-        dp=new int[nums.length];
-        // Arrays.fill(dp,-1);
-        return helper(nums,0)==1;
-    }
-    
-    
-    public int helper(int[] nums,int curr){
-        if(curr==nums.length-1) return 1;
-        if(curr>=nums.length) return -1;
-        if(dp[curr]!=0) return dp[curr];
-        int ans=-1;
-        for(int i=curr+1;i<=Math.min(curr+nums[curr],nums.length);i++){
-            ans=Math.max(ans,helper(nums,i));
-            if(ans==1) break;
+        dp=new boolean[nums.length];
+        dp[0]=true;
+        for(int i=0;i<nums.length;i++){
+            if(nums[i]==0) continue;
+            for(int j=i+1;j<=Math.min(nums.length-1,i+nums[i])&&dp[i];j++)
+                dp[j]=true;
         }
-        return dp[curr]=ans;
+        // System.out.println(Arrays.toString(dp));
+        return dp[nums.length-1];
     }
+    
+    
 }
